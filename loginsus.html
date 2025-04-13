@@ -1,12 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign-Up Page with Video Background</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page with Video Background</title>
   <style>
-    /* Reset and base styles */
     * {
       margin: 0;
       padding: 0;
@@ -20,7 +18,6 @@
       overflow: hidden;
     }
 
-    /* Background video */
     video.bg-video {
       position: fixed;
       top: 0;
@@ -34,12 +31,12 @@
     .overlay {
       height: 100%;
       width: 100%;
-      background: rgba(0, 0, 0, 0.4); /* semi-dark overlay */
+      background: rgba(0, 0, 0, 0.4);
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    /* Container for the sign-up form */
+
     .signup-container {
       position: absolute;
       top: 50%;
@@ -52,7 +49,7 @@
       backdrop-filter: blur(5px);
       border-radius: 16px;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-      color:white;
+      color: white;
     }
 
     .signup-container h2 {
@@ -67,19 +64,19 @@
       border: none;
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.2);
-      color:white;
+      color: white;
       font-size: 1rem;
     }
 
     .signup-container input::placeholder {
-      color:black;
+      color: black;
     }
 
     .signup-container button {
       width: 100%;
       padding: 0.75rem;
       margin-top: 1rem;
-      background:rgb(5, 81, 156);
+      background: rgb(5, 81, 156);
       color: #fff;
       font-weight: bold;
       border: none;
@@ -89,7 +86,7 @@
     }
 
     .signup-container button:hover {
-      background:rgba(4, 65, 126, 0.8);
+      background: rgba(4, 65, 126, 0.8);
     }
 
     .login-text {
@@ -100,7 +97,7 @@
     }
 
     .login-text a {
-      color:white;
+      color: white;
       font-weight: bold;
       text-decoration: underline;
     }
@@ -114,40 +111,35 @@
     Your browser does not support the video tag.
   </video>
 
-  <!-- Sign-up form container -->
-   <div class="overlay">
-  <div class="signup-container">
-    <h2 >Login</h2>
-    <form id="signupForm">
-      <input type="email" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Sign Up</button>
-    </form>
-    <div class="login-text">
-      Don't have an account? <a href="">Sign Up</a>
+  <!-- Login Form Container -->
+  <div class="overlay">
+    <div class="signup-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+      <div class="login-text">
+        Don't have an account? <a href="E:\sushackthon\signupsus.html">Sign Up</a>
+      </div>
     </div>
   </div>
-  </div>
-  <body>
 
   <!-- JavaScript -->
   <script>
-    document.getElementById('loginform').addEventListener('submit', function(event) {
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
       if (email && password) {
         alert(`Logged in as ${email}`);
-        // Here you can add your real login logic
+        window.location.href = "memusus.html"; // Navigate to home page after login
       } else {
         alert("Please enter both email and password.");
       }
-      }
-
-      // Placeholder logic for form submission
-
-    );
+    });
   </script>
 
 </body>
