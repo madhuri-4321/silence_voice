@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign-Up Page with Video Background</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Background video */
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .overlay {
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4); /* semi-dark overlay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* Container for the sign-up form */
+    .signup-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 450px;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      border-radius: 16px;
+      box-shadow: 0 0 20px  rgba(0, 0, 0, 0.4);
+      
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .signup-container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color:white;
+      font-size: 1rem;
+    }
+
+    .signup-container input::placeholder {
+      color:black;
+    }
+
+    .signup-container button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      background:rgb(5, 81, 156);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.5s;
+    }
+
+    .signup-container button:hover {
+      background:rgba(4, 65, 126, 0.8);
+    }
+
+    .login-text {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: white;
+    }
+
+    .login-text a {
+      color:white;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+*
+  <!-- Background video -->
+  <video class="bg-video" autoplay muted loop>
+    <source src="C:\Users\hp\CrossDevice\realme C55\hello.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Sign-up form container -->
+   <div class="overlay" >
+  <div class="signup-container">
+    <h2 >Create an Account</h2>
+    <form id="signupForm">
+      <input type="text" id="fullname" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="login-text">
+      Already have an account? <a href="loginsus.html">Login</a>
+    </div>
+  </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const fullname = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!fullname || !email || !phone || !password) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      // Placeholder logic for form submission
+      
+    });
+  </script>
+
+</body>
+</html>

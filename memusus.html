@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Page with Video Background</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .navbar-menu a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-menu a:hover {
+      color: #00ffff;
+    }
+
+    .content {
+      margin-top: 100px;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .button-container {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .button-container button {
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border: 2px solid white;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .button-container button:hover {
+      background-color: white;
+      color: #141E30;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group input {
+      padding: 0.6rem;
+      width: 250px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .form-group button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-group button:hover {
+      background-color: white;
+      color: #141E30;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="https://www.videvo.net/videvo_files/converted/2016_10/preview/160929_B_138_Forest_1080p.mp487577.webm" type="video/webm">
+    <source src="C:\Users\hp\CrossDevice\realme C55\hello1.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">Silent Vioce</div>
+    <div class="navbar-menu">
+      <a href="#" onclick="goHome()">Home</a>
+      <a href="#" onclick="aboutUs()">About Us</a>
+      <a href="#" onclick="openProfile()">Profile</a>
+      <a href="#" onclick="openLogout()">Logout</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content" id="mainContent">
+    <h1>Welcome to Silent Voice</h1>
+    
+
+    <div class="button-container">
+      <button onclick="textToAudio()">Text to Audio</button>
+      <button onclick="signToText()">Sign Language to Text</button>
+      <button onclick="signToAudio()">Sign Language to Audio</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    let userData = null;
+
+    function goHome() {
+      document.getElementById('mainContent').innerHTML = `
+        <h1>Welcome to Our Home Page</h1>
+        <p>This is the home section. Use the menu to navigate through different parts of the website.</p>
+        <div class="button-container">
+          <button onclick="textToAudio()">Text to Audio</button>
+          <button onclick="signToText()">Sign Language to Text</button>
+          <button onclick="signToAudio()">Sign Language to Audio</button>
+        </div>
+      `;
+    }
+
+    function aboutUs() {
+      document.getElementById('mainContent').innerHTML = `
+        <h1>About Us</h1>
+        <p>We are a team of passionate developers dedicated to creating inclusive communication tools. Our mission is to bridge the gap between speech and sign language using innovative AI technologies. We aim to empower individuals of all abilities by providing accessible, user-friendly solutions that make interaction easier and more effective.</p>
+      `;
+    }
+
+    function openProfile() {
+      if (userData) {
+        document.getElementById('mainContent').innerHTML = `
+          <h1>Your Profile</h1>
+          <p><strong>Name:</strong> ${userData.name}</p>
+          <p><strong>Email:</strong> ${userData.email}</p>
+          <p><strong>Phone:</strong> ${userData.phone}</p>
+          <p><strong>Password:</strong> ${userData.password}</p>
+        `;
+      } else {
+        document.getElementById('mainContent').innerHTML = `
+          <h1>Edit Profile</h1>
+          <form onsubmit="saveProfile(event)">
+            <div class="form-group"><input type="text" id="name" placeholder="Name" required /></div>
+            <div class="form-group"><input type="email" id="email" placeholder="Email" required /></div>
+            <div class="form-group"><input type="tel" id="phone" placeholder="Phone Number" required /></div>
+            <div class="form-group"><input type="password" id="password" placeholder="Password" required /></div>
+            <div class="form-group"><button type="submit">Save</button></div>
+          </form>
+        `;
+      }
+    }
+
+    function saveProfile(event) {
+      event.preventDefault();
+      userData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        password: document.getElementById("password").value
+      };
+      alert("Profile saved successfully!");
+      openProfile();
+    }
+
+    function openLogout() {
+  userData = null;
+  alert("You have been logged out.");
+  goHome();
+}
+
+
+    function textToAudio() {
+      alert("Redirecting to Text to Audio...");
+    }
+
+    function signToText() {
+      alert("Redirecting to Sign Language to Text...");
+    }
+
+    function signToAudio() {
+      alert("Redirecting to Sign Language to Audio...");
+    }
+  </script>
+
+</body>
+</html>
